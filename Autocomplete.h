@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void menu();
+void add();
+void show();
 
 #endif
