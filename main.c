@@ -3,7 +3,6 @@
 #include "Autocomplete.h"
 
 int main() {
-
     Node *lista = NULL;
     char palavra[MAX];
 
