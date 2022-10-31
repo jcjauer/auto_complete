@@ -5,8 +5,6 @@
 
 #include "Autocomplete.h"
 
-Node *vetor[26];
-
 int inicial() {
     return 0;
 }
@@ -31,38 +29,54 @@ void read() {
     fclose(arquivo);
 }
 
-int addletra(Node **list, char *data) {
-    Node *newNode = (Node *)malloc(sizeof(Node));
+int add(Node **list, char palavra[MAX]) {
 
-    if(newNode == NULL) {
-        return -1;
+    for(int i = 0; palavra[i] != '\0' && i < (MAX - 1); i++) {
+
+        printf("\nadd: %d", i);
+
+        Node *newNode = (Node *)malloc(sizeof(Node));
+
+        if(newNode == NULL) {
+            return -1;
+        }
+
+        newNode->next = NULL;
+        newNode->under = NULL;
+
+        newNode->data = (char *)malloc(sizeof(char));
+
+        if(newNode->data == NULL) {
+            return -1;
+        }
+
+        *newNode->data = palavra[i];
+
+        printf(" Letra: %c\n", *newNode->data);
+
+        if(*list == NULL) {
+            *list = newNode;
+        }
+        else {
+            Node *aux = NULL;
+            for(aux = *list; aux->next != NULL; aux = aux->next);
+            aux->next = newNode;
+        }
     }
 
-    newNode->data = data;
-    newNode->next = NULL;
-    newNode->under = NULL;
-
-    if(*list == NULL) {
-        *list = newNode;
-    }
-    else {
-        Node *aux = NULL;
-        for(aux = *list; aux->next != NULL; aux = aux->next);
-        aux->next = newNode;
-    }
     return 1;
 }
 
-int addpalavra(Node **list, char palavra[MAX]) {
-
-    char *data[MAX];
-
-    for(int i = 0; !palavra[i] && i < MAX; i++) {
-        data[i] = (char *)malloc(sizeof(char));
-        //add(&list, )
+void show(Node *list) {
+    if(list != NULL) {
+        Node *aux = NULL;
+        printf("\nSaída: ");
+        for(aux = list; aux->next != NULL; aux = aux->next) {
+            printf("%c", *aux->data);
+        }
+        printf("%c", *aux->data);
+        printf("\n");
     }
-}
 
-void show(Node *list){
-    //
+    
 }

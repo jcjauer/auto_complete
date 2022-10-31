@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define MAX  20
+#define MAX  100
 
 typedef struct Node {
     char *data;
@@ -14,8 +14,7 @@ typedef struct Node {
 
 int inicial();
 void read();
-int addpalavra(Node **list, char palavra[MAX]);
-int addletra(Node **list, char *data);
+int add(Node **list, char palavra[MAX]);
 void show(Node *list);
 
 #endif
