@@ -13,9 +13,19 @@ int main() {
 
     printf("\nDigite uma palavra: ");
     scanf("%s", palavra);
-    printf("\nPalavra: %s\n", palavra);
+    printf("Palavra: %s\n", palavra);
     add(&lista[0], palavra);
-    show(lista[0]);
+show(lista[0]);
+    printf("\nDigite uma palavra: ");
+    scanf("%s", palavra);
+    printf("Palavra: %s\n", palavra);
+    add(&lista[0], palavra);
+show(lista[0]);
+    printf("\nDigite uma palavra: ");
+    scanf("%s", palavra);
+    printf("Palavra: %s\n", palavra);
+    add(&lista[0], palavra);
+show(lista[0]);
 
     return EXIT_SUCCESS;
 }

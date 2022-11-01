@@ -48,47 +48,62 @@ int buildNode(Node **newNode) {
 int add(Node **list, char palavra[MAX]) {
     int i = 0;
     Node *newNode;
-
-    printf("\nadd: %d", i); /////////////////
+    Node *auxlist = NULL;
     if(*list == NULL) {
         buildNode(&newNode);
         *newNode->data = palavra[i];
         *list = newNode;
-        printf(" Letra: %c\n", *newNode->data); /////////////////
-        i++;
     }
+    auxlist = *list;
+    printf("add: %d Letra: %c\n", i, *auxlist->data); ///////////////// 
+    i++;
     for(i; palavra[i] != '\0' && i < (MAX - 1); i++) {
-        printf("\nadd: %d", i); /////////////////
-        if(palavra[i] != '\0'){
+        if(auxlist->next == NULL) {
             buildNode(&newNode);
             *newNode->data = palavra[i];
-            Node *aux = NULL;
-            for(aux = *list; aux->next != NULL; aux = aux->next);
-            aux->next = newNode;
-            printf(" Letra: %c\n", *newNode->data); ///////////////////////
+            auxlist->next = newNode;
+            auxlist = auxlist->next;  
+            printf("add: %d Letra: %c\n", i, *auxlist->data); /////////////////
         }
+        else if(*auxlist->next->data == palavra[i]) {
+            auxlist = auxlist->next;
+            printf("add: %d Letra: %c\n", i, *auxlist->data); /////////////////
+        } 
         else {
-
+            auxlist = auxlist->next;
+            if(auxlist->next == NULL) {
+                buildNode(&newNode);
+                *newNode->data = palavra[i];
+                auxlist->next = newNode;
+                auxlist = auxlist->next; 
+                printf("add: %d Letra: %c\n", i, *auxlist->data); /////////////////
+            }
+            else if(*auxlist->next->data == palavra[i]) {
+                auxlist = auxlist->next;
+                printf("add: %d Letra: %c\n", i, *auxlist->data); /////////////////
+            }
         }
     }
-    printf("\nadd: %d", i); ///////////////////////
-    if(palavra[i] == '\0') {
-        buildNode(&newNode);
-        *newNode->data = palavra[i];
-        printf(" Letra: nula\n"); ///////////////////////
-    }
+    buildNode(&newNode);
+    *newNode->data = palavra[i];
+    auxlist->next = newNode;
+    printf("add: %d Letra: nula\n", i); /////////////////
+    
     return 1;
 }
 
 void show(Node *list) {
+    printf("Saída: ");
     if(list != NULL) {
         Node *aux = NULL;
-        printf("\nSaída: ");
         for(aux = list; aux->next != NULL; aux = aux->next) {
+            if(*aux->data == '\0') {
+                aux = aux->next;
+                printf(" ");
+            }
             printf("%c", *aux->data);
         }
         printf("%c", *aux->data);
-        printf("\n");
     }
-    printf(" \n");
+    printf("\n\n");
 }
