@@ -29,41 +29,54 @@ void read() {
     fclose(arquivo);
 }
 
+int buildNode(Node **newNode) {
+    Node *aux = (Node *)malloc(sizeof(Node));
+    if(aux == NULL) {
+        return -1;
+    }
+    aux->data = (char *)malloc(sizeof(char));
+    if(aux->data == NULL) {
+        return -1;
+    }
+    aux->next = NULL;
+    aux->under = NULL;
+    *aux->data = '\0';
+    *newNode = aux;
+    return 1;
+}
+
 int add(Node **list, char palavra[MAX]) {
+    int i = 0;
+    Node *newNode;
 
-    for(int i = 0; palavra[i] != '\0' && i < (MAX - 1); i++) {
-
-        printf("\nadd: %d", i);
-
-        Node *newNode = (Node *)malloc(sizeof(Node));
-
-        if(newNode == NULL) {
-            return -1;
-        }
-
-        newNode->next = NULL;
-        newNode->under = NULL;
-
-        newNode->data = (char *)malloc(sizeof(char));
-
-        if(newNode->data == NULL) {
-            return -1;
-        }
-
+    printf("\nadd: %d", i); /////////////////
+    if(*list == NULL) {
+        buildNode(&newNode);
         *newNode->data = palavra[i];
-
-        printf(" Letra: %c\n", *newNode->data);
-
-        if(*list == NULL) {
-            *list = newNode;
-        }
-        else {
+        *list = newNode;
+        printf(" Letra: %c\n", *newNode->data); /////////////////
+        i++;
+    }
+    for(i; palavra[i] != '\0' && i < (MAX - 1); i++) {
+        printf("\nadd: %d", i); /////////////////
+        if(palavra[i] != '\0'){
+            buildNode(&newNode);
+            *newNode->data = palavra[i];
             Node *aux = NULL;
             for(aux = *list; aux->next != NULL; aux = aux->next);
             aux->next = newNode;
+            printf(" Letra: %c\n", *newNode->data); ///////////////////////
+        }
+        else {
+
         }
     }
-
+    printf("\nadd: %d", i); ///////////////////////
+    if(palavra[i] == '\0') {
+        buildNode(&newNode);
+        *newNode->data = palavra[i];
+        printf(" Letra: nula\n"); ///////////////////////
+    }
     return 1;
 }
 
@@ -77,6 +90,5 @@ void show(Node *list) {
         printf("%c", *aux->data);
         printf("\n");
     }
-
-    
+    printf(" \n");
 }

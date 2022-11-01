@@ -16,5 +16,6 @@ int inicial();
 void read();
 int add(Node **list, char palavra[MAX]);
 void show(Node *list);
+int buildNode(Node **newNode);
 
 #endif
