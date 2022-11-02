@@ -13,17 +13,17 @@ int main() {
 
     printf("\nDigite uma palavra: ");
     scanf("%s", palavra);
-    printf("Palavra: %s\n", palavra);
+    printf("Entrada: %s\n", palavra);
     add(&lista[0], palavra);
 show(lista[0]);
     printf("\nDigite uma palavra: ");
     scanf("%s", palavra);
-    printf("Palavra: %s\n", palavra);
+    printf("Entrada: %s\n", palavra);
     add(&lista[0], palavra);
 show(lista[0]);
     printf("\nDigite uma palavra: ");
     scanf("%s", palavra);
-    printf("Palavra: %s\n", palavra);
+    printf("Entrada: %s\n", palavra);
     add(&lista[0], palavra);
 show(lista[0]);
 

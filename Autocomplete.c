@@ -93,17 +93,26 @@ int add(Node **list, char palavra[MAX]) {
 }
 
 void show(Node *list) {
-    printf("Saída: ");
     if(list != NULL) {
-        Node *aux = NULL;
-        for(aux = list; aux->next != NULL; aux = aux->next) {
-            if(*aux->data == '\0') {
-                aux = aux->next;
-                printf(" ");
+        char palavra[MAX];
+        int i = 0;
+        Node *aux = list;
+        palavra[i] = *aux->data;
+        printf("show: %d Letra: %c\n", i, *aux->data);
+        i++;
+        for(aux; aux->next != NULL; aux = aux->next) {
+            if(*aux->next->data == '\0') {
+                palavra[i] = *aux->next->data;
+                printf("show: %d Letra: nula\n", i);
+                printf("Saída: %s\n", palavra);
             }
-            printf("%c", *aux->data);
+            else
+            {
+                palavra[i] = *aux->next->data;
+                printf("show: %d Letra: %c\n", i, *aux->next->data);
+                i++;
+            }
         }
-        printf("%c", *aux->data);
     }
-    printf("\n\n");
+    printf("\n");
 }
