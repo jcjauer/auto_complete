@@ -69,7 +69,7 @@ int add(Node **list, char palavra[MAX]) {
             auxlist = auxlist->next;
             printf("add: %d Letra: %c\n", i, *auxlist->data); /////////////////
         } 
-        else {
+        else if(*auxlist->next->data == '\0') {
             auxlist = auxlist->next;
             if(auxlist->next == NULL) {
                 buildNode(&newNode);
@@ -82,37 +82,81 @@ int add(Node **list, char palavra[MAX]) {
                 auxlist = auxlist->next;
                 printf("add: %d Letra: %c\n", i, *auxlist->data); /////////////////
             }
+            else if(*auxlist->next->data != palavra[i]) {
+                if(auxlist->under != NULL) {
+                    
+                    for(auxlist; auxlist->under != NULL; auxlist = auxlist->under) {
+                        if(*auxlist->next->data == palavra[i]) {
+                            auxlist = auxlist->next;
+                            printf("add: %d Letra: %c\n", i, *auxlist->data); /////////////////
+                            break;
+                        }
+                    }
+                }
+                if(*auxlist->data != palavra[i] && auxlist->under == NULL) {
+                    buildNode(&newNode);
+                    auxlist->under = newNode;
+                    auxlist = auxlist->under;
+                    buildNode(&newNode);
+                    *newNode->data = palavra[i];
+                    auxlist->next = newNode;
+                    auxlist = auxlist->next;
+                    printf("add: %d Letra: %c\n", i, *auxlist->data); /////////////////
+                }
+            }
+        }
+        else if(*auxlist->next->data != palavra[i]) {
+            if(auxlist->under != NULL) {
+                
+                for(auxlist; auxlist->under != NULL; auxlist = auxlist->under) {
+                    if(*auxlist->next->data == palavra[i]) {
+                        auxlist = auxlist->next;
+                        printf("add: %d Letra: %c\n", i, *auxlist->data); /////////////////
+                        break;
+                    }
+                }
+            }
+            if(*auxlist->data != palavra[i] && auxlist->under == NULL) {
+                buildNode(&newNode);
+                auxlist->under = newNode;
+                auxlist = auxlist->under;
+                buildNode(&newNode);
+                *newNode->data = palavra[i];
+                auxlist->next = newNode;
+                auxlist = auxlist->next;
+                printf("add: %d Letra: %c\n", i, *auxlist->data); /////////////////
+            }
         }
     }
     buildNode(&newNode);
-    *newNode->data = palavra[i];
     auxlist->next = newNode;
     printf("add: %d Letra: nula\n", i); /////////////////
     
     return 1;
 }
 
-void show(Node *list) {
+void show(Node *list, char palavra[MAX], int pos) {
     if(list != NULL) {
-        char palavra[MAX];
-        int i = 0;
         Node *aux = list;
-        palavra[i] = *aux->data;
-        printf("show: %d Letra: %c\n", i, *aux->data);
-        i++;
+        palavra[pos] = *aux->data;
+        printf("show: %d Letra: %c\n", pos, *aux->data);
+        pos++;
         for(aux; aux->next != NULL; aux = aux->next) {
+            while(aux->under != NULL) {
+                show(aux->next, palavra, pos);
+                aux = aux->under;
+            }
             if(*aux->next->data == '\0') {
-                palavra[i] = *aux->next->data;
-                printf("show: %d Letra: nula\n", i);
+                palavra[pos] = *aux->next->data;
+                printf("show: %d Letra: nula\n", pos);
                 printf("Saída: %s\n", palavra);
             }
             else
             {
-                palavra[i] = *aux->next->data;
-                printf("show: %d Letra: %c\n", i, *aux->next->data);
-                i++;
+                palavra[pos] = *aux->next->data;
+                printf("show: %d Letra: %c\n", pos, *aux->next->data);
+                pos++;
             }
         }
     }
-    printf("\n");
 }

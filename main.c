@@ -9,23 +9,28 @@ int main() {
         lista[i] = NULL;
     }
 
-    char palavra[MAX];
+    char entrada[MAX];
+    char saida[MAX];
 
-    printf("\nDigite uma palavra: ");
-    scanf("%s", palavra);
-    printf("Entrada: %s\n", palavra);
-    add(&lista[0], palavra);
-show(lista[0]);
-    printf("\nDigite uma palavra: ");
-    scanf("%s", palavra);
-    printf("Entrada: %s\n", palavra);
-    add(&lista[0], palavra);
-show(lista[0]);
-    printf("\nDigite uma palavra: ");
-    scanf("%s", palavra);
-    printf("Entrada: %s\n", palavra);
-    add(&lista[0], palavra);
-show(lista[0]);
+    printf("\nDigite uma entrada: ");
+    scanf("%s", entrada);
+    printf("Entrada: %s\n", entrada);
+    add(&lista[0], entrada);
+    show(lista[0], saida, 0);
+
+    printf("\nDigite uma entrada: ");
+    scanf("%s", entrada);
+    printf("Entrada: %s\n", entrada);
+    add(&lista[0], entrada);
+    show(lista[0], saida, 0);
+
+    printf("\nDigite uma entrada: ");
+    scanf("%s", entrada);
+    printf("Entrada: %s\n", entrada);
+    add(&lista[0], entrada);
+    show(lista[0], saida, 0);
+
+    printf("\n");
 
     return EXIT_SUCCESS;
 }

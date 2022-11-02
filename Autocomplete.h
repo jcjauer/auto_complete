@@ -15,7 +15,7 @@ typedef struct Node {
 int inicial();
 void read();
 int add(Node **list, char palavra[MAX]);
-void show(Node *list);
+void show(Node *list, char palavra[MAX], int pos);
 int buildNode(Node **newNode);
 
 #endif
