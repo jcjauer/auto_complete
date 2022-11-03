@@ -18,10 +18,10 @@ int main() {
     
     do {
         printf("\n");
-        printf("Escolha uma opção: \n");
         printf("(1) - Adicionar palavra;\n");
         printf("(2) - Buscar palavra;\n");
         printf("(0) - Sair.\n");
+        printf("Escolha uma opção: ");
         scanf("%d", &opc);
 
         switch ( opc ) {
