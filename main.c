@@ -30,6 +30,10 @@ int main() {
     add(&lista[0], entrada);
     show(lista[0], saida, 0);
 
+    printf("\nProcurar uma entrada: ");
+    scanf("%s", entrada);
+    printf("Entrada: %s\n", entrada);
+    found(lista[0], entrada);
     printf("\n");
 
     return EXIT_SUCCESS;
