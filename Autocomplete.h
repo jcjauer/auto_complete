@@ -16,7 +16,6 @@ int buildNode(Node **newNode);
 void add(Node **list, char palavra[MAX]);
 void show(Node *list, char palavra[MAX], int pos);
 int found(Node *list, char procurar[MAX]);
-void read();
-
+void read(Node *list[26]);
 
 #endif

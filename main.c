@@ -11,30 +11,43 @@ int main() {
 
     char entrada[MAX];
     char saida[MAX];
+    
+    int opc = 0;
 
-    printf("\nDigite uma entrada: ");
-    scanf("%s", entrada);
-    printf("Entrada: %s\n", entrada);
-    add(&lista[0], entrada);
-    show(lista[0], saida, 0);
+    do {
+        printf("\n");
+        printf("Escolha uma opção: \n");
+        printf("(1) - Adicionar palavra;\n");
+        printf("(2) - Buscar palavra;\n");
+        printf("(0) - Sair.\n");
+        scanf("%d", &opc);
 
-    printf("\nDigite uma entrada: ");
-    scanf("%s", entrada);
-    printf("Entrada: %s\n", entrada);
-    add(&lista[0], entrada);
-    show(lista[0], saida, 0);
+        switch ( opc ) {
+            case 1 :
+                printf("\nDigite a palavra: ");
+                scanf("%s", entrada);
+                printf("Entrada: %s\n", entrada);
+                add(&lista[0], entrada);
+                printf("\n");
+                break;
+            case 2 :
+                printf("\nProcurar a palavra: ");
+                scanf("%s", entrada);
+                printf("Entrada: %s\n", entrada);
+                found(lista[0], entrada);
+                printf("\n");
+                break;
+            case 0 :
+                printf("\n");
+                printf("Saindo.\n");
+                break;
+            default :
+                printf("\n");
+                printf("Opção inválida.\n");
+        }
+    } while (opc != 0);
 
-    printf("\nDigite uma entrada: ");
-    scanf("%s", entrada);
-    printf("Entrada: %s\n", entrada);
-    add(&lista[0], entrada);
-    show(lista[0], saida, 0);
-
-    printf("\nProcurar uma entrada: ");
-    scanf("%s", entrada);
-    printf("Entrada: %s\n", entrada);
-    found(lista[0], entrada);
-    printf("\n");
+    read(&lista[0]);
 
     return EXIT_SUCCESS;
 }
