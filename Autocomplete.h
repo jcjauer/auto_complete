@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define MAX  100
+#define MAX  29858
 
 typedef struct Node {
     char *data;

@@ -24,17 +24,18 @@ int main() {
 
         switch ( opc ) {
             case 1 :
-                printf("\nDigite a palavra: ");
-                scanf("%s", entrada);
-                printf("Entrada: %s\n", entrada);
-                add(&lista[0], entrada);
-                printf("\n");
+                read(&lista[0]);
+                // printf("\nDigite a palavra: ");
+                // scanf("%s", entrada);
+                // printf("Entrada: %s\n", entrada);
+                // add(&lista[0], entrada);
+                // printf("\n");
                 break;
             case 2 :
                 printf("\nProcurar a palavra: ");
                 scanf("%s", entrada);
                 printf("Entrada: %s\n", entrada);
-                found(lista[0], entrada);
+                found(lista[entrada[0]], entrada);
                 printf("\n");
                 break;
             case 0 :
@@ -46,8 +47,6 @@ int main() {
                 printf("Opção inválida.\n");
         }
     } while (opc != 0);
-
-    read(&lista[0]);
 
     return EXIT_SUCCESS;
 }

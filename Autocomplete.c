@@ -216,9 +216,9 @@ void read(Node *list[26]) {
     }
     else {     
         while(fscanf(arquivo,"%[^\n]%*c\n", palavra)!=EOF) {
-            printf("Entrada: %s\n", palavra);
+            // printf("Entrada: %s\n", palavra);
             add(&list[palavra[0]], palavra);
-            found(list[palavra[0]], palavra);
+            // found(list[palavra[0]], palavra);
         }
 	}
 
