@@ -12,10 +12,11 @@ typedef struct Node {
     struct Node *next;
 }Node;
 
-int inicial();
-void read();
-int add(Node **list, char palavra[MAX]);
-void show(Node *list, char palavra[MAX], int pos);
 int buildNode(Node **newNode);
+void add(Node **list, char palavra[MAX]);
+void show(Node *list, char palavra[MAX], int pos);
+int found(Node *list, char procurar[MAX]);
+void read();
+
 
 #endif
