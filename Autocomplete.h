@@ -17,5 +17,6 @@ void read();
 int add(Node **list, char palavra[MAX]);
 void show(Node *list, char palavra[MAX], int pos);
 int buildNode(Node **newNode);
+int check(Node **list, char *palavra);
 
 #endif

@@ -160,3 +160,14 @@ void show(Node *list, char palavra[MAX], int pos) {
         }
     }
 }
+
+int check(Node **list, char *palavra){
+
+    for(int i = 0; i < 26; i++){
+        if(palavra[0] == i){
+           add(&list[i], palavra);
+           printf("Palavra adicionada na lista %d", i);
+            return i;
+        }
+    }
+}
